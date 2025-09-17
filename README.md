@@ -2,6 +2,8 @@
 
 React TypeScript frontend with Tailwind CSS for visualizing Phoenix Police Department missing persons data.
 
+**Disclaimer:** This project is for technical demonstration and civic awareness purposes. It is not intended to replace official reporting or investigative work.
+
 ## Setup
 
 1. Install dependencies:
