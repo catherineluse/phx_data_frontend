@@ -181,7 +181,7 @@ function App() {
             <p>Data visualization for Phoenix Police Department missing persons reports</p>
             <div className="flex justify-center space-x-6">
               <a
-                href="https://github.com/catherineluse/phx_data_frontend"
+                href="https://github.com/gennitdev/phx_data_frontend"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-800 underline"
@@ -189,7 +189,7 @@ function App() {
                 Frontend Source Code
               </a>
               <a
-                href="https://github.com/catherineluse/phx_data_backend"
+                href="https://github.com/gennitdev/phx_data_backend"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-800 underline"
