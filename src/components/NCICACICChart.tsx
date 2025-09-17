@@ -56,8 +56,8 @@ const NCICACICChart: React.FC<NCICACICChartProps> = ({ data, loading }) => {
               ]}
             />
             <Legend />
-            <Bar dataKey="Yes" stackId="1" fill="#10b981" name="Yes" />
-            <Bar dataKey="No" stackId="1" fill="#ef4444" name="No" />
+            <Bar dataKey="Yes" fill="#10b981" name="Yes" />
+            <Bar dataKey="No" fill="#ef4444" name="No" />
           </BarChart>
         </ResponsiveContainer>
       </div>
