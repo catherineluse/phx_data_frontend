@@ -73,6 +73,12 @@ function App() {
               Exploring trends, demographics, and outcomes in missing persons data to highlight patterns
               not easily visible in raw reports, including which groups are most affected and typical case resolution times
             </p>
+            <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-md">
+              <p className="text-sm text-yellow-800">
+                <strong>Disclaimer:</strong> This project is for technical demonstration and civic awareness purposes.
+                It is not intended to replace official reporting or investigative work.
+              </p>
+            </div>
             <p className="mt-2 text-sm text-gray-500">
               Data source: <a
                 href="https://www.phoenixopendata.com/dataset/missing-persons"
