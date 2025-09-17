@@ -39,13 +39,12 @@ The app will run on http://localhost:3000
    - Median days missing
    - Percentage still missing
 
-2. **Monthly Reports with Anomaly Detection**
+2. **Monthly Reports**
    - Time series chart showing monthly report counts
    - 12-month rolling average
-   - Anomaly detection with Z-score highlighting (red dots for |Z| ≥ 2)
 
 3. **Time to Located Distribution**
-   - Histogram showing how long it takes to locate missing persons
+   - Histogram style bar chart showing how long it takes to locate missing persons
    - Buckets: 0-1d, 2-7d, 8-20d, 21-89d, 90+d, Still Missing, Unknown/Invalid
 
 4. **Demographics Charts**
