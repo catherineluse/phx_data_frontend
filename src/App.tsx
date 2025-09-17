@@ -67,6 +67,16 @@ function App() {
               Exploring trends, demographics, and outcomes in missing persons data to highlight patterns
               not easily visible in raw reports, including which groups are most affected and typical case resolution times
             </p>
+            <p className="mt-2 text-sm text-gray-500">
+              Data source: <a
+                href="https://www.phoenixopendata.com/dataset/missing-persons"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 underline"
+              >
+                Phoenix Open Data - Missing Persons
+              </a>
+            </p>
           </div>
         </div>
       </header>
