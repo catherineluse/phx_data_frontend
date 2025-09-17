@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { KPIData, MonthlyReportData, MonthlyReportWithAnomalyData, TimeToLocatedData, DemographicsData, NCICACICData } from '../types';
+import { KPIData, MonthlyReportData, MonthlyReportWithAnomalyData, TimeToLocatedData, DemographicsData, NCICACICData, TimeToLocatedByDemographicData } from '../types';
 
 const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 
@@ -31,4 +31,13 @@ export const analyticsAPI = {
 
   getNCICACICStatus: (): Promise<NCICACICData[]> =>
     api.get('/analytics/ncic-acic-status').then(res => res.data),
+
+  getTimeToLocatedByRace: (): Promise<TimeToLocatedByDemographicData[]> =>
+    api.get('/analytics/time-to-located-by-race').then(res => res.data),
+
+  getTimeToLocatedBySex: (): Promise<TimeToLocatedByDemographicData[]> =>
+    api.get('/analytics/time-to-located-by-sex').then(res => res.data),
+
+  getTimeToLocatedByMisstype: (): Promise<TimeToLocatedByDemographicData[]> =>
+    api.get('/analytics/time-to-located-by-misstype').then(res => res.data),
 };

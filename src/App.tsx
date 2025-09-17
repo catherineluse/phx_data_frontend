@@ -5,12 +5,14 @@ import MonthlyReportsChart from './components/MonthlyReportsChart';
 import TimeToLocatedChart from './components/TimeToLocatedChart';
 import DemographicsChart from './components/DemographicsChart';
 import NCICACICChart from './components/NCICACICChart';
+import TimeToLocatedStackedChart from './components/TimeToLocatedStackedChart';
 import {
   KPIData,
   MonthlyReportWithAnomalyData,
   TimeToLocatedData,
   DemographicsData,
-  NCICACICData
+  NCICACICData,
+  TimeToLocatedByDemographicData
 } from './types';
 
 function App() {
@@ -21,6 +23,9 @@ function App() {
   const [sexData, setSexData] = useState<DemographicsData[] | null>(null);
   const [raceData, setRaceData] = useState<DemographicsData[] | null>(null);
   const [ncicAcicData, setNcicAcicData] = useState<NCICACICData[] | null>(null);
+  const [timeToLocatedByRaceData, setTimeToLocatedByRaceData] = useState<TimeToLocatedByDemographicData[] | null>(null);
+  const [timeToLocatedBySexData, setTimeToLocatedBySexData] = useState<TimeToLocatedByDemographicData[] | null>(null);
+  const [timeToLocatedByMisstypeData, setTimeToLocatedByMisstypeData] = useState<TimeToLocatedByDemographicData[] | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,7 +38,10 @@ function App() {
           misstype,
           sex,
           race,
-          ncicAcic
+          ncicAcic,
+          timeToLocatedByRace,
+          timeToLocatedBySex,
+          timeToLocatedByMisstype
         ] = await Promise.all([
           analyticsAPI.getKPI(),
           analyticsAPI.getMonthlyReportsWithAnomaly(),
@@ -41,7 +49,10 @@ function App() {
           analyticsAPI.getDemographicsByMisstype(),
           analyticsAPI.getDemographicsBySex(),
           analyticsAPI.getDemographicsByRace(),
-          analyticsAPI.getNCICACICStatus()
+          analyticsAPI.getNCICACICStatus(),
+          analyticsAPI.getTimeToLocatedByRace(),
+          analyticsAPI.getTimeToLocatedBySex(),
+          analyticsAPI.getTimeToLocatedByMisstype()
         ]);
 
         setKpiData(kpi);
@@ -51,6 +62,9 @@ function App() {
         setSexData(sex);
         setRaceData(race);
         setNcicAcicData(ncicAcic);
+        setTimeToLocatedByRaceData(timeToLocatedByRace);
+        setTimeToLocatedBySexData(timeToLocatedBySex);
+        setTimeToLocatedByMisstypeData(timeToLocatedByMisstype);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -100,6 +114,28 @@ function App() {
           <MonthlyReportsChart data={monthlyData} loading={loading} />
 
           <TimeToLocatedChart data={timeToLocatedData} loading={loading} />
+
+          <TimeToLocatedStackedChart
+            data={timeToLocatedByRaceData}
+            loading={loading}
+            title="Time to Located by Race"
+            demographicType="race"
+          />
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <TimeToLocatedStackedChart
+              data={timeToLocatedBySexData}
+              loading={loading}
+              title="Time to Located by Sex"
+              demographicType="sex"
+            />
+            <TimeToLocatedStackedChart
+              data={timeToLocatedByMisstypeData}
+              loading={loading}
+              title="Time to Located by Age Group"
+              demographicType="misstype"
+            />
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <DemographicsChart

@@ -33,3 +33,11 @@ export interface NCICACICData {
   yes_count: number;
   no_count: number;
 }
+
+export interface TimeToLocatedByDemographicData {
+  bucket: string;
+  race_category?: string;
+  sex_category?: string;
+  misstype_category?: string;
+  count: number;
+}
