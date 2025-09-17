@@ -9,7 +9,7 @@
           "value": "http"
         }
       ],
-      "destination": "https://yourdomain.com/$1",
+      "destination": "https://your-actual-domain.vercel.app/$1",
       "permanent": true
     }
   ]

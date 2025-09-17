@@ -54,7 +54,7 @@ const MonthlyReportsChart: React.FC<MonthlyReportsChartProps> = ({ data, loading
                 return `Month: ${value}`;
               }}
               formatter={(value: number, name: string) => [
-                `${value} people`,
+                `${value} reports`,
                 name === 'reports' ? 'Reports' : name
               ]}
             />

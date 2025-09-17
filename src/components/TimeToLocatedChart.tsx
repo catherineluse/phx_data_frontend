@@ -69,7 +69,7 @@ const TimeToLocatedChart: React.FC<TimeToLocatedChartProps> = ({ data, loading }
             <YAxis  />
             <Tooltip
               formatter={(value: number, name: string) => [
-                name === 'count' ? `${value.toLocaleString()} people` : `${value}%`,
+                name === 'count' ? `${value.toLocaleString()} reports` : `${value}%`,
                 name === 'count' ? 'Count' : 'Percentage'
               ]}
               labelFormatter={(label: string) => formatBucketLabel(label)}
