@@ -39,6 +39,7 @@ const DemographicsChart: React.FC<DemographicsChartProps> = ({
   const chartData = data.map(item => ({
     ...item,
     date: new Date(item.mon).toLocaleDateString('en-US', { year: '2-digit', month: 'short' }),
+    tooltipDate: new Date(item.mon).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
   }));
 
   return (
@@ -55,7 +56,12 @@ const DemographicsChart: React.FC<DemographicsChartProps> = ({
             />
             <YAxis />
             <Tooltip
-              labelFormatter={(value) => `Date: ${value}`}
+              labelFormatter={(value, payload) => {
+                if (payload && payload[0] && payload[0].payload) {
+                  return `Date: ${payload[0].payload.tooltipDate}`;
+                }
+                return `Date: ${value}`;
+              }}
               formatter={(value: number, name: string) => [
                 value.toLocaleString(),
                 name
