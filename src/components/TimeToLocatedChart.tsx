@@ -53,7 +53,7 @@ const TimeToLocatedChart: React.FC<TimeToLocatedChartProps> = ({ data, loading }
               textAnchor="end"
               height={80}
             />
-            <YAxis />
+            <YAxis  />
             <Tooltip
               formatter={(value: number, name: string) => [
                 name === 'count' ? value.toLocaleString() : `${value}%`,

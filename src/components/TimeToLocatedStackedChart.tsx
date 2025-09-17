@@ -89,7 +89,7 @@ const TimeToLocatedStackedChart: React.FC<TimeToLocatedStackedChartProps> = ({
       <h2 className="text-xl font-bold text-gray-800 mb-4">{title}</h2>
       <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
+          <BarChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="bucket"
@@ -98,7 +98,7 @@ const TimeToLocatedStackedChart: React.FC<TimeToLocatedStackedChartProps> = ({
               textAnchor="end"
               height={80}
             />
-            <YAxis />
+            <YAxis  />
             <Tooltip
               formatter={(value: number, name: string) => [
                 value.toLocaleString(),

@@ -118,7 +118,7 @@ function App() {
           <TimeToLocatedStackedChart
             data={timeToLocatedByRaceData}
             loading={loading}
-            title="Time to Located by Race"
+            title="Time to Located by Race and Ethnicity"
             demographicType="race"
           />
 
@@ -158,15 +158,17 @@ function App() {
           <DemographicsChart
             data={raceData}
             loading={loading}
-            title="Demographics by Race"
+            title="Demographics by Race & Ethnicity"
             categories={[
-              'White',
+              'Hispanic White',
+              'Non-Hispanic White',
+              'White (Ethnicity Unknown)',
               'Black',
               'Asian / Pacific Islander',
               'American Indian / Alaskan Native',
               'Unknown'
             ]}
-            colors={['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#6b7280']}
+            colors={['#3b82f6', '#06b6d4', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444', '#6b7280']}
           />
 
           <NCICACICChart data={ncicAcicData} loading={loading} />
