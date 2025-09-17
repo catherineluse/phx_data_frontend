@@ -125,9 +125,27 @@ function App() {
 
       <footer className="bg-white border-t mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <p className="text-center text-gray-500 text-sm">
-            Data visualization for Phoenix Police Department missing persons reports
-          </p>
+          <div className="text-center text-gray-500 text-sm space-y-2">
+            <p>Data visualization for Phoenix Police Department missing persons reports</p>
+            <div className="flex justify-center space-x-6">
+              <a
+                href="https://github.com/catherineluse/phx_data_frontend"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 underline"
+              >
+                Frontend Source Code
+              </a>
+              <a
+                href="https://github.com/catherineluse/phx_data_backend"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 underline"
+              >
+                Backend Source Code
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
