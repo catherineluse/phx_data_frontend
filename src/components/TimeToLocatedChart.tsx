@@ -68,14 +68,18 @@ const TimeToLocatedChart: React.FC<TimeToLocatedChartProps> = ({ data, loading }
           </BarChart>
         </ResponsiveContainer>
       </div>
-      <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
+      <div className="mt-4 grid grid-cols-2 gap-2 text-sm">
         {data.map((item) => (
-          <div key={item.bucket} className="flex justify-between">
+          <div key={item.bucket} className="flex items-center">
             <span className="font-medium">{item.bucket}:</span>
-            <span>{item.count.toLocaleString()} ({item.pct_of_total}%)</span>
+            <span className="ml-2">{item.count.toLocaleString()} ({item.pct_of_total}%)</span>
           </div>
         ))}
       </div>
+      <p className="mt-3 text-xs text-gray-500">
+        * Unknown/Invalid includes cases where last seen date is missing, located date is missing,
+        or located date is before last seen date
+      </p>
     </div>
   );
 };
