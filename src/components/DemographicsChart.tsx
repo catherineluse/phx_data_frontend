@@ -39,7 +39,7 @@ const DemographicsChart: React.FC<DemographicsChartProps> = ({
   const chartData = data.map(item => {
     const transformed: any = {
       date: new Date(item.mon).toLocaleDateString('en-US', { year: '2-digit', month: 'short' }),
-      tooltipDate: new Date(item.mon).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+      tooltipDate: new Date(item.mon).toLocaleDateString('en-US', { year: 'numeric', month: 'long' }),
     };
 
     // Convert all non-date fields to numbers and map category names to keys
@@ -76,9 +76,9 @@ const DemographicsChart: React.FC<DemographicsChartProps> = ({
             <Tooltip
               labelFormatter={(value, payload) => {
                 if (payload && payload[0] && payload[0].payload) {
-                  return `Date: ${payload[0].payload.tooltipDate}`;
+                  return `Month: ${payload[0].payload.tooltipDate}`;
                 }
-                return `Date: ${value}`;
+                return `Month: ${value}`;
               }}
               formatter={(value: number, name: string) => [
                 value.toLocaleString(),

@@ -8,6 +8,19 @@ interface TimeToLocatedChartProps {
 }
 
 const TimeToLocatedChart: React.FC<TimeToLocatedChartProps> = ({ data, loading }) => {
+  const formatBucketLabel = (bucket: string) => {
+    switch (bucket) {
+      case '0-1d': return '0 to 1 day';
+      case '2-7d': return '2 to 7 days';
+      case '8-20d': return '8 to 20 days';
+      case '21-89d': return '21 to 89 days';
+      case '90+d': return '90+ days';
+      case 'Still Missing': return 'Still Missing';
+      case 'Unknown/Invalid': return 'Unknown/Invalid';
+      default: return bucket;
+    }
+  };
+
   if (loading) {
     return (
       <div className="bg-white p-6 rounded-lg shadow-md">
@@ -59,6 +72,7 @@ const TimeToLocatedChart: React.FC<TimeToLocatedChartProps> = ({ data, loading }
                 name === 'count' ? value.toLocaleString() : `${value}%`,
                 name === 'count' ? 'Count' : 'Percentage'
               ]}
+              labelFormatter={(label: string) => formatBucketLabel(label)}
             />
             <Bar dataKey="count" radius={[4, 4, 0, 0]}>
               {data.map((entry, index) => (
@@ -77,8 +91,9 @@ const TimeToLocatedChart: React.FC<TimeToLocatedChartProps> = ({ data, loading }
         ))}
       </div>
       <p className="mt-3 text-xs text-gray-500">
-        * Unknown/Invalid includes cases where last seen date is missing, located date is missing,
-        or located date is before last seen date
+        * Still Missing: Person not yet found (no located date but valid last seen date)
+        <br />
+        * Unknown/Invalid: Cases where last seen date is missing or located date is before last seen date
       </p>
     </div>
   );
