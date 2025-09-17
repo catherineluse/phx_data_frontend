@@ -1,7 +1,7 @@
 {
   "redirects": [
     {
-      "source": "/(.*)",
+      "source": "/((?!api/).*)",
       "has": [
         {
           "type": "header",
@@ -9,7 +9,7 @@
           "value": "http"
         }
       ],
-      "destination": "https://phx-data.com/$1",
+      "destination": "https://yourdomain.com/$1",
       "permanent": true
     }
   ]
