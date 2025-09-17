@@ -4,11 +4,13 @@ import KPICard from './components/KPICard';
 import MonthlyReportsChart from './components/MonthlyReportsChart';
 import TimeToLocatedChart from './components/TimeToLocatedChart';
 import DemographicsChart from './components/DemographicsChart';
+import NCICACICChart from './components/NCICACICChart';
 import {
   KPIData,
   MonthlyReportWithAnomalyData,
   TimeToLocatedData,
-  DemographicsData
+  DemographicsData,
+  NCICACICData
 } from './types';
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
   const [misstypeData, setMisstypeData] = useState<DemographicsData[] | null>(null);
   const [sexData, setSexData] = useState<DemographicsData[] | null>(null);
   const [raceData, setRaceData] = useState<DemographicsData[] | null>(null);
+  const [ncicAcicData, setNcicAcicData] = useState<NCICACICData[] | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,14 +32,16 @@ function App() {
           timeToLocated,
           misstype,
           sex,
-          race
+          race,
+          ncicAcic
         ] = await Promise.all([
           analyticsAPI.getKPI(),
           analyticsAPI.getMonthlyReportsWithAnomaly(),
           analyticsAPI.getTimeToLocatedHistogram(),
           analyticsAPI.getDemographicsByMisstype(),
           analyticsAPI.getDemographicsBySex(),
-          analyticsAPI.getDemographicsByRace()
+          analyticsAPI.getDemographicsByRace(),
+          analyticsAPI.getNCICACICStatus()
         ]);
 
         setKpiData(kpi);
@@ -45,6 +50,7 @@ function App() {
         setMisstypeData(misstype);
         setSexData(sex);
         setRaceData(race);
+        setNcicAcicData(ncicAcic);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -120,6 +126,8 @@ function App() {
             ]}
             colors={['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#6b7280']}
           />
+
+          <NCICACICChart data={ncicAcicData} loading={loading} />
         </div>
       </main>
 

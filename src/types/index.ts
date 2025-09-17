@@ -27,3 +27,9 @@ export interface DemographicsData {
   mon: string;
   [key: string]: number | string;
 }
+
+export interface NCICACICData {
+  category: string;
+  yes_count: number;
+  no_count: number;
+}
