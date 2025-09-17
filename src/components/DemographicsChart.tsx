@@ -36,11 +36,29 @@ const DemographicsChart: React.FC<DemographicsChartProps> = ({
     );
   }
 
-  const chartData = data.map(item => ({
-    ...item,
-    date: new Date(item.mon).toLocaleDateString('en-US', { year: '2-digit', month: 'short' }),
-    tooltipDate: new Date(item.mon).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
-  }));
+  const chartData = data.map(item => {
+    const transformed: any = {
+      date: new Date(item.mon).toLocaleDateString('en-US', { year: '2-digit', month: 'short' }),
+      tooltipDate: new Date(item.mon).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+    };
+
+    // Convert all non-date fields to numbers and map category names to keys
+    Object.keys(item).forEach(key => {
+      if (key !== 'mon') {
+        const value = item[key];
+        const numericValue = typeof value === 'string' ? parseInt(value, 10) : Number(value);
+
+        // Keep the original key (works for race data with exact matches)
+        transformed[key] = numericValue;
+
+        // Also create lowercase versions for misstype/sex data compatibility
+        const lowerKey = key.toLowerCase();
+        transformed[lowerKey] = numericValue;
+      }
+    });
+
+    return transformed;
+  });
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
@@ -68,18 +86,25 @@ const DemographicsChart: React.FC<DemographicsChartProps> = ({
               ]}
             />
             <Legend />
-            {categories.map((category, index) => (
-              <Area
-                key={category}
-                type="monotone"
-                dataKey={category.toLowerCase().replace(/\s+/g, '_').replace(/[/\s]/g, '_')}
-                stackId="1"
-                stroke={colors[index % colors.length]}
-                fill={colors[index % colors.length]}
-                fillOpacity={0.6}
-                name={category}
-              />
-            ))}
+            {categories.map((category, index) => {
+              // Try original category name first, then lowercase version
+              const dataKey = chartData.length > 0 && chartData[0][category] !== undefined
+                ? category
+                : category.toLowerCase();
+
+              return (
+                <Area
+                  key={category}
+                  type="monotone"
+                  dataKey={dataKey}
+                  stackId="1"
+                  stroke={colors[index % colors.length]}
+                  fill={colors[index % colors.length]}
+                  fillOpacity={0.6}
+                  name={category}
+                />
+              );
+            })}
           </AreaChart>
         </ResponsiveContainer>
       </div>
