@@ -34,7 +34,7 @@ The app will run on http://localhost:3000
 
 ### Data Visualizations
 
-1. **Key Performance Indicators (KPI)**
+1. **Summary**
    - Total reports count
    - Median days missing
    - Percentage still missing

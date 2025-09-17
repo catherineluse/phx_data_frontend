@@ -32,7 +32,7 @@ const KPICard: React.FC<KPICardProps> = ({ data, loading }) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">Key Performance Indicators</h2>
+      <h2 className="text-xl font-bold text-gray-800 mb-4">Summary of Data Since January 2016</h2>
       <div className="grid grid-cols-3 gap-6">
         <div className="text-center">
           <div className="text-3xl font-bold text-blue-600">

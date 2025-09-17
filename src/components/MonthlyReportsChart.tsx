@@ -54,9 +54,8 @@ const MonthlyReportsChart: React.FC<MonthlyReportsChartProps> = ({ data, loading
                 return `Month: ${value}`;
               }}
               formatter={(value: number, name: string) => [
-                value,
-                name === 'reports' ? 'Reports' :
-                name === 'mean_12mo' ? '12-mo Average' : name
+                `${value} people`,
+                name === 'reports' ? 'Reports' : name
               ]}
             />
             <Legend />
@@ -67,15 +66,6 @@ const MonthlyReportsChart: React.FC<MonthlyReportsChartProps> = ({ data, loading
               strokeWidth={2}
               dot={false}
               name="Reports"
-            />
-            <Line
-              type="monotone"
-              dataKey="mean_12mo"
-              stroke="#16a34a"
-              strokeWidth={2}
-              strokeDasharray="5 5"
-              dot={false}
-              name="12-mo Average"
             />
           </LineChart>
         </ResponsiveContainer>
