@@ -83,7 +83,7 @@ function App() {
             <DemographicsChart
               data={misstypeData}
               loading={loading}
-              title="Demographics by Missing Type"
+              title="Demographics by Adult/Juvenile"
               categories={['Adult', 'Juvenile', 'Unknown']}
               colors={['#3b82f6', '#10b981', '#6b7280']}
             />
