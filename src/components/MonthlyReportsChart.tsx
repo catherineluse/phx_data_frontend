@@ -35,7 +35,7 @@ const MonthlyReportsChart: React.FC<MonthlyReportsChartProps> = ({ data, loading
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">Monthly Reports with Anomaly Detection</h2>
+      <h2 className="text-xl font-bold text-gray-800 mb-4">Monthly Reports over Time</h2>
       <div className="h-96">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData}>
