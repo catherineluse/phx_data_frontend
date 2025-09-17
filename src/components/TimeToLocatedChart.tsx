@@ -69,16 +69,12 @@ const TimeToLocatedChart: React.FC<TimeToLocatedChartProps> = ({ data, loading }
             <YAxis  />
             <Tooltip
               formatter={(value: number, name: string) => [
-                name === 'count' ? value.toLocaleString() : `${value}%`,
+                name === 'count' ? `${value.toLocaleString()} people` : `${value}%`,
                 name === 'count' ? 'Count' : 'Percentage'
               ]}
               labelFormatter={(label: string) => formatBucketLabel(label)}
             />
-            <Bar dataKey="count" radius={[4, 4, 0, 0]}>
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={getBarColor(entry.bucket)} />
-              ))}
-            </Bar>
+            <Bar dataKey="count" radius={[4, 4, 0, 0]} fill="#3b82f6" />
           </BarChart>
         </ResponsiveContainer>
       </div>
