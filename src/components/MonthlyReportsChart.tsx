@@ -30,16 +30,7 @@ const MonthlyReportsChart: React.FC<MonthlyReportsChartProps> = ({ data, loading
   const chartData = data.map(item => ({
     ...item,
     date: new Date(item.mon).toLocaleDateString('en-US', { year: '2-digit', month: 'short' }),
-    isAnomaly: Math.abs(item.zscore_12mo || 0) >= 2
   }));
-
-  const CustomDot = (props: any) => {
-    const { cx, cy, payload } = props;
-    if (payload.isAnomaly) {
-      return <circle cx={cx} cy={cy} r={4} fill="#ef4444" stroke="#ef4444" strokeWidth={2} />;
-    }
-    return null;
-  };
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
@@ -59,8 +50,7 @@ const MonthlyReportsChart: React.FC<MonthlyReportsChartProps> = ({ data, loading
               formatter={(value: number, name: string) => [
                 value,
                 name === 'reports' ? 'Reports' :
-                name === 'mean_12mo' ? '12-mo Average' :
-                name === 'zscore_12mo' ? 'Z-Score' : name
+                name === 'mean_12mo' ? '12-mo Average' : name
               ]}
             />
             <Legend />
@@ -69,7 +59,7 @@ const MonthlyReportsChart: React.FC<MonthlyReportsChartProps> = ({ data, loading
               dataKey="reports"
               stroke="#2563eb"
               strokeWidth={2}
-              dot={<CustomDot />}
+              dot={false}
               name="Reports"
             />
             <Line
@@ -84,9 +74,6 @@ const MonthlyReportsChart: React.FC<MonthlyReportsChartProps> = ({ data, loading
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <p className="text-sm text-gray-600 mt-2">
-        Red dots indicate anomalies (Z-score ≥ 2 or ≤ -2)
-      </p>
     </div>
   );
 };
