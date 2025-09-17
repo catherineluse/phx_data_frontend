@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# Phoenix Missing Persons Data Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React TypeScript frontend with Tailwind CSS for visualizing Phoenix Police Department missing persons data.
 
-## Available Scripts
+## Setup
 
-In the project directory, you can run:
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### `npm start`
+2. Configure environment:
+   ```bash
+   cp .env.example .env
+   ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   Edit `.env` to point to your backend:
+   ```
+   REACT_APP_API_URL=http://localhost:3001
+   ```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Development
 
-### `npm test`
+Start the development server:
+```bash
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app will run on http://localhost:3000
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Data Visualizations
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Key Performance Indicators (KPI)**
+   - Total reports count
+   - Median days missing
+   - Percentage still missing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Monthly Reports with Anomaly Detection**
+   - Time series chart showing monthly report counts
+   - 12-month rolling average
+   - Anomaly detection with Z-score highlighting (red dots for |Z| ≥ 2)
 
-### `npm run eject`
+3. **Time to Located Distribution**
+   - Histogram showing how long it takes to locate missing persons
+   - Buckets: 0-1d, 2-7d, 8-20d, 21-89d, 90+d, Still Missing, Unknown/Invalid
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+4. **Demographics Charts**
+   - Stacked area charts showing trends by:
+     - Missing type (Adult/Juvenile)
+     - Sex (Male/Female)
+     - Race (White/Black/Asian Pacific Islander/American Indian Alaskan Native)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Technical Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Responsive design with Tailwind CSS
+- TypeScript for type safety
+- Recharts for interactive visualizations
+- Loading states and error handling
+- API integration with the Express backend
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Build
 
-## Learn More
+Build for production:
+```bash
+npm run build
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The build artifacts will be in the `build/` directory.
