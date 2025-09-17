@@ -61,10 +61,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="py-6">
             <h1 className="text-3xl font-bold text-gray-900">
-              Phoenix Missing Persons Data Visualization
+              Phoenix Missing Persons Dashboard
             </h1>
             <p className="mt-2 text-gray-600">
-              Analysis of missing persons reports from Phoenix Police Department
+              Exploring trends, demographics, and outcomes in missing persons data to highlight patterns
+              not easily visible in raw reports, including which groups are most affected and typical case resolution times
             </p>
           </div>
         </div>
